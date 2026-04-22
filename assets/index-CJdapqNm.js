@@ -715,7 +715,7 @@ var require_stdin = __commonJS({
           });
         }
       }
-      const zo = "/assets/stillpeachy_core_wasm_bg-cA-0DMUd.wasm", Go = async (t = {}, e) => {
+      const zo = "/assets/peachsafe_core_wasm_bg-BlIpoZNB.wasm", Go = async (t = {}, e) => {
         let x;
         if (e.startsWith("data:")) {
           const n = e.replace(/^data:.*?base64,/, "");
@@ -967,7 +967,7 @@ var require_stdin = __commonJS({
       }
       URL = globalThis.URL;
       const Mr = await Go({
-        "./stillpeachy_core_wasm_bg.js": {
+        "./peachsafe_core_wasm_bg.js": {
           __wbg_crypto_38df2bab126b63dc: lr,
           __wbg_process_44c7a14e11e9f69e: Br,
           __wbg_versions_276b2795b1c6a219: br,
@@ -1971,7 +1971,7 @@ var require_stdin = __commonJS({
         const n = (/* @__PURE__ */ new Date(t.endedAt + "T00:00:00Z")).getTime() + Os * 864e5;
         return (/* @__PURE__ */ new Date(e + "T00:00:00Z")).getTime() < n;
       }
-      const ce = "stillpeachy_pending_encounters";
+      const ce = "peachsafe_pending_encounters";
       async function b0() {
         const t = qx(Y);
         $n.set(t.byteLength >= Zn);
@@ -2049,7 +2049,7 @@ var require_stdin = __commonJS({
         const t = kx;
         return kx = "/home", t;
       }
-      const so = "StillPeachy", nl = "stillpeachy-backup";
+      const so = "PeachSafe", nl = "peachsafe-backup";
       function ol(t) {
         let e, x, n, o, r, l, s, c, i, B = t[3] ? "Verifying\u2026" : "Verify", E, u, A, d, C, D, m, h = t[4] && at(t);
         return {
@@ -2429,7 +2429,7 @@ var require_stdin = __commonJS({
         let e, x, n, o;
         return e = new G0({}), {
           c() {
-            g0(e.$$.fragment), x = y(), n = F("main"), n.innerHTML = `<div class="hero svelte-1np6qbr"><div class="logo-wrap svelte-1np6qbr"><span class="material-icons logo-icon svelte-1np6qbr">local_florist</span></div> <h1 class="app-name svelte-1np6qbr">StillPeachy</h1> <p class="tagline svelte-1np6qbr">Private. Local. Yours.</p></div> <div class="actions svelte-1np6qbr"><a href="#/encounter-exchange" class="btn-filled svelte-1np6qbr"><span class="material-icons svelte-1np6qbr">qr_code</span>
+            g0(e.$$.fragment), x = y(), n = F("main"), n.innerHTML = `<div class="hero svelte-1np6qbr"><div class="logo-wrap svelte-1np6qbr"><span class="material-icons logo-icon svelte-1np6qbr">local_florist</span></div> <h1 class="app-name svelte-1np6qbr">PeachSafe</h1> <p class="tagline svelte-1np6qbr">Private. Local. Yours.</p></div> <div class="actions svelte-1np6qbr"><a href="#/encounter-exchange" class="btn-filled svelte-1np6qbr"><span class="material-icons svelte-1np6qbr">qr_code</span>
       Log New Encounter</a></div>`, f(n, "class", "svelte-1np6qbr");
           },
           m(r, l) {
@@ -18248,7 +18248,11 @@ Minimum version required to store current data is: ` + r + `.
           S();
         });
         async function M() {
-          x(5, A = null), d = false, x(0, n = "scanning"), await new Promise((Q) => setTimeout(Q, 50));
+          if (x(5, A = null), d = false, !navigator.mediaDevices?.getUserMedia) {
+            x(5, A = "Camera not available. This page must be opened over HTTPS to use the camera."), x(0, n = "showQR");
+            return;
+          }
+          x(0, n = "scanning"), await new Promise((Q) => setTimeout(Q, 50));
           try {
             E = await navigator.mediaDevices.getUserMedia({
               video: {
